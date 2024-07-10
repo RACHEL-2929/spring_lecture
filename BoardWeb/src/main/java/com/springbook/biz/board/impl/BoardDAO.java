@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import com.springbook.biz.board.BoardVO;
-import com.springbook.common.JDBCUtil;
+import com.springbook.biz.common.JDBCUtil;
 
 //DAO
 @Repository("boardDAO")
@@ -110,7 +110,6 @@ public class BoardDAO{
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BOARD_LIST);
-			stmt.setInt(1, vo.getSeq());
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
