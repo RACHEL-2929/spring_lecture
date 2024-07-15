@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//1. 사용자 입력 정보 추출
+	/* //1. 사용자 입력 정보 추출
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
 	
@@ -22,6 +22,6 @@
 		response.sendRedirect("getBoardList.jsp");
 	}else{
 		response.sendRedirect("login.jsp");
-	}
+	} */
 
 %>
