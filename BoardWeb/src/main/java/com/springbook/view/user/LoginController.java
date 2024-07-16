@@ -26,6 +26,9 @@ public class LoginController {
 	}
 	@PostMapping("/login.do")
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session) {
+		if(vo.getId() == null || vo.getId().equals("")) {
+			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+		}
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
@@ -34,24 +37,4 @@ public class LoginController {
 		else
 			return "login.jsp";
 	}
-
-	/*@Override public ModelAndView handleRequest(HttpServletRequest request,
-	  HttpServletResponse response) { System.out.println("로그인 처리");
-	  
-	  //1. 사용자 입력 정보 추출 String id = request.getParameter("id"); String password =
-	  request.getParameter("password");
-	  
-	  //2. DB 연동 처리 UserVO vo = new UserVO(); vo.setId(id);
-	  vo.setPassword(password);
-	  
-	  UserDAO userDAO = new UserDAO(); UserVO user = userDAO.getUser(vo);
-	  
-	  //3. 화면 네비게이션 ModelAndView mav = new ModelAndView(); if(user != null) {
-	  mav.setViewName("redirect:getBoardList.do"); }else
-
-	{
-		mav.setViewName("login.jsp");
-	}return mav;
-}*/
-
 }

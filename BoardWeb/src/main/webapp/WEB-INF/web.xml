@@ -24,6 +24,19 @@
 	</filter-mapping>
 	<!-- 한글 인코딩 End -->
 	
+	<!-- DB 연동 정보-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<!--controller 객체가 생성되기 전에 DB 연결 정보가 있어야 하니까 미리 로딩되게 하는 것  -->
+	<!--WEB-INF 밑에 있는 것을 먼저 읽게 한다.  -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
 
 	<servlet>
 		<servlet-name>action</servlet-name>
