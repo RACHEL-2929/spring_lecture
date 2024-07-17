@@ -11,7 +11,7 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.JDBCUtil;
 
 //DAO
-@Repository("boardDAO")
+@Repository
 public class BoardDAO{
 
 	//jdbc 관련 변수
