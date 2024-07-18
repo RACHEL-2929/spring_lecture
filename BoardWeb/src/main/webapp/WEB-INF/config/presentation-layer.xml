@@ -17,8 +17,8 @@
 	</bean>
 	
 <!-- 	<mvc:annotation-driven></mvc:annotation-driven>
- 이 태그를 적어줘야 @ExceptionHandler를 읽을 수 있다.
- -->
+ 이 태그를 적어줘야 @ExceptionHandler를 읽을 수 있다. -->
+
  	<!-- 예외 처리 설정 -->
 <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 	<property name="exceptionMappings">

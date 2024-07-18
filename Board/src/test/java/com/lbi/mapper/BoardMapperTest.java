@@ -15,13 +15,17 @@ public class BoardMapperTest {
 	private static final Logger log = org.slf4j.LoggerFactory.getLogger(BoardMapperTest.class);
 	@Autowired
 	private BoardMapper mapper;
-	
+
 	@Test
-	public void testEnroll() {
-		BoardVO vo = new BoardVO();
-		vo.setTitle("mapper Test");
-		vo.setContent("mapper Test");
-		vo.setWriter("mapper Test");
-		mapper.enroll(vo);
+	public void testGetPage() {
+
+		int bno = 8;
+		log.info("" + mapper.getPage(bno));
 	}
+
+	/*
+	 * @Test public void testEnroll() { BoardVO vo = new BoardVO();
+	 * vo.setTitle("mapper Test"); vo.setContent("mapper Test");
+	 * vo.setWriter("mapper Test"); mapper.enroll(vo); }
+	 */
 }

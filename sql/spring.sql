@@ -26,3 +26,21 @@ DESC USERS;
 update users set password='test1234' where id='test';
 insert into users values('test','test1234','test','admin');
 commit;
+
+create table lbi_board(
+bno number generated always as IDENTITY,
+title varchar2(150) not null,
+content varchar2(2000) not null,
+writer varchar2(50) not null,
+regdate date default sysdate,
+updatedate date default sysdate,
+constraint pk_board PRIMARY key(bno)
+);
+
+insert into lbi_board(title,content,writer) values('테스트 제목','테스트 내용','작가');
+insert into lbi_board(title,content,writer) values('테스트 제목','테스트 내용','작가');
+insert into lbi_board(title,content,writer) values('테스트 제목','테스트 내용','작가');
+
+commit;
+
+select * from lbi_board;

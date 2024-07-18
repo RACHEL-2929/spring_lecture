@@ -7,7 +7,35 @@
   
   <!--게시글 등록  -->
   <insert id="enroll">
-  	insert into lbi_board(title,content,writer) values(#{title},#{content},#{writer})
+  	INSERT INTO LBI_BOARD(
+  		TITLE,
+  		CONTENT,
+  		WRITER
+  	) VALUES(
+  		#{title},
+  		#{content},
+  		#{writer}
+  	)
   </insert>
+  
+  <select id="getList" resultType="com.lbi.model.BoardVO">
+  	SELECT *
+  	FROM LBI_BOARD
+  </select>
+  
+  <select id="getPage" resultType="com.lbi.model.BoardVO">
+  	SELECT *
+  	FROM LBI_BOARD
+  	WHERE BNO = #{bno}
+  </select>
+  
+  <update id="modify">
+  	UPDATE LBI_BOARD
+  	SET 
+  		TITLE=#{title},
+  		CONTENT=#{content},
+  		UPDATEDATE=SYSDATE
+  	WHERE BNO=#{bno}
+  </update>
   
   </mapper>
