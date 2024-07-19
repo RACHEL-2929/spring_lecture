@@ -10,6 +10,9 @@ public class Criteria {
 	private String type;
 	private String[] typeArr;
 	
+	public Criteria() {
+		this(1,10);
+	}
 	public String getType() {
 		return type;
 	}
@@ -35,9 +38,6 @@ public class Criteria {
 		this.keyword = keyword;
 	}
 
-	public Criteria() {
-		this(1,10);
-	}
 	
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;

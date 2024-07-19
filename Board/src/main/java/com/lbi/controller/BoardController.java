@@ -26,6 +26,7 @@ public class BoardController {
 	@GetMapping("/list")
 	public void boardListGET(Model model, Criteria cri) {
 		log.info("게시판 목록 페이지 진입");
+		log.info("cri : " + cri);
 		model.addAttribute("list", bservice.getListPaging(cri));
 		int total = bservice.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
