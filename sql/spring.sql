@@ -43,4 +43,17 @@ insert into lbi_board(title,content,writer) values('테스트 제목','테스트 내용','
 
 commit;
 
+insert into lbi_board(title,content,writer)(select title,content,writer from lbi_board);
+
+select count(*) from lbi_board;
+
+select rn,bno,title,content,writer,regdate,updatedate from(
+select rownum as rn, bno, title, content, writer,regdate,updatedate
+from lbi_board
+)where rn between 11 and 20;
+
+
+select rownum as rn, bno, title, content, writer,regdate,updatedate
+from lbi_board;
+
 select * from lbi_board;

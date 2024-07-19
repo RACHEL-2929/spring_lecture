@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lbi.model.BoardVO;
+import com.lbi.model.Criteria;
+import com.lbi.model.PageMakerDTO;
 import com.lbi.service.BoardService;
 
 @Controller
@@ -22,9 +24,12 @@ public class BoardController {
 	private BoardService bservice;
 
 	@GetMapping("/list")
-	public void boardListGET(Model model) {
+	public void boardListGET(Model model, Criteria cri) {
 		log.info("게시판 목록 페이지 진입");
-		model.addAttribute("list", bservice.getList());
+		model.addAttribute("list", bservice.getListPaging(cri));
+		int total = bservice.getTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
 
 	}
 
@@ -56,6 +61,14 @@ public class BoardController {
 	public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
 		bservice.modify(board);
 		rttr.addFlashAttribute("result", "modify success");
+
+		return "redirect:/board/list";
+	}
+	
+	@PostMapping("/delete")
+	public String boardDeletePOST(int bno, RedirectAttributes rttr ) {
+		bservice.delete(bno);
+		rttr.addFlashAttribute("result", "delete success");
 
 		return "redirect:/board/list";
 	}

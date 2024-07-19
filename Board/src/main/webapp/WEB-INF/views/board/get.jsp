@@ -83,6 +83,8 @@ margin-top : 50px;
 		</div>
 		<form action="/board/modify" id="infoForm" method="get">
 			<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno }"/>'>
+			<input type="hidden" name="keyword" value="${cri.keyword }"/>
+			<input type="hidden" name="type" value="${cri.type }"/>
 		</form>
 <script>
 	let form = $("#infoForm");
